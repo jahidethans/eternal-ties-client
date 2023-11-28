@@ -53,8 +53,8 @@ const Login = () => {
     //     console.log(email , password);
     // }
 
-    const handleValidateCaptcha = () =>{
-        const user_captcha_value = captachaRef.current.value;
+    const handleValidateCaptcha = (e) =>{
+        const user_captcha_value = e.target.value;
         if(validateCaptcha(user_captcha_value)){
             setDisabled(false);
         }else{
@@ -125,8 +125,8 @@ const Login = () => {
                             <label className="label">
                             <LoadCanvasTemplate />
                             </label>
-                            <input ref={captachaRef}  type="text" name="captcha" placeholder="type the captcha above" className="input input-bordered" required />
-                            <button type='button' onClick={handleValidateCaptcha} className="btn btn-outline btn-xs mt-2 text-black">Validate</button>
+                            <input onBlur={handleValidateCaptcha}  type="text" name="captcha" placeholder="type the captcha above" className="input input-bordered" required />
+                            
                             
                         </div>
   <div className="flex items-start mb-5">

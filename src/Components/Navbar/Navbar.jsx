@@ -62,15 +62,12 @@ const Navbar = () => {
             <Link to='/'  >
                 <h1 className={logo ? 'hidden' : 'block'} >EternalTies.</h1>
             </Link>
-            <ul className='hidden md:flex gap-6 px-5'>
+            <ul className='hidden md:flex gap-12 px-5'>
                 <Link to='/'>Home</Link>
-                {
-                    user?.email ? <><Link to='/allfoods'>Available Foods</Link>
-                    <Link to='/addfood'>Add Food</Link>
-                    <Link to='/managemyfoods'>Manage My Foods</Link>
-                    <Link to='/myfoodrequest'>My Food Request</Link></> :
-                    <Link to='/allfoods'>Available Foods</Link>
-                }
+                <Link to='/biodatas'>Biodatas</Link>
+                <Link to='/addfood'>About us</Link>
+                <Link to='/managemyfoods'>Contact us</Link>
+                    
             </ul>
 
             <div className='hidden md:flex'>
@@ -154,13 +151,10 @@ const Navbar = () => {
                     </div> : ''
                     }
                     <Link to='/' className='border-b border-black pb-2'>Home</Link>
-                    {
-                    user?.email ? <><Link to='/allfoods' className='border-b border-black pb-2'>Available Foods</Link>
-                    <Link to='/addfood' className='border-b border-black pb-2'>Add Food</Link>
-                    <Link to='/managemyfoods' className='border-b border-black pb-2'>Manage My Foods</Link>
-                    <Link to='/myfoodrequest' className='border-b border-black pb-2'>My Food Request</Link></> :
-                    <Link to='/allfoods' className='border-b border-black pb-2'>Available Foods</Link>
-                }
+                    <Link to='/biodatas' className='border-b border-black pb-2'>Biodatas</Link>
+                    <Link to='/addfood' className='border-b border-black pb-2'>About us</Link>
+                    <Link to='/managemyfoods' className='border-b border-black pb-2'>Contact us</Link>
+                   
                     <div className='flex'>
                         {
                             user?.email ? <button onClick={handleLogout} className='w-full my-4 p-3 border bg-gradient-to-r from-[var(--primary-dark)] to-[var(--primary-light)] text-white rounded-md'>Sign Out</button> : <Link to='/login' className='w-full my-4 p-3 border bg-gradient-to-r from-[var(--primary-dark)] to-[var(--primary-light)] text-white rounded-md'>Sign in</Link>
