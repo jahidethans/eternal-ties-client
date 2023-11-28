@@ -1,7 +1,10 @@
+import { Link } from "react-router-dom";
 
 
 const Biodata = ({biodata}) => {
-  const {biodataType, image, name, contactEmail, dateOfBirth, expectedPartnerHeight, expectedPartnerWeight, fathersName, height, mobileNumber, mothersName, occupation, permanentDivision, presentDivision, race, weight, age } = biodata;
+  
+  const {_id, biodataType, image, name, contactEmail, dateOfBirth, expectedPartnerHeight, expectedPartnerWeight, fathersName, height, mobileNumber, mothersName, occupation, permanentDivision, presentDivision, race, weight, age } = biodata;
+
     return (
         <div>
              <div className="bg-gray-100 p-8 rounded-md shadow-md max-w-md mx-auto my-4">
@@ -23,7 +26,7 @@ const Biodata = ({biodata}) => {
       <div className="mb-2">
         <strong>Permanent Division:</strong> {permanentDivision}
       </div></div>
-      <button className="h-12 ">View details</button>
+      <Link to={`/biodatas/${_id}`}><button className="h-12 ">View details</button></Link>
       </div>
       
       
