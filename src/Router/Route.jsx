@@ -6,6 +6,10 @@ import SignUp from "../Pages/Register/SignUp";
 import Biodatas from "../Pages/Biodatas/Biodatas";
 import BiodataDetail from "../Components/Navbar/BiodataDetail";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import DashBoard from "../Layout/DashBoard";
+import Favouite from "../Pages/Dashboard/favourite/Favouite";
+import EditBiodata from "../Pages/Dashboard/favourite/EditBiodata";
+import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 
 
 
@@ -37,6 +41,28 @@ const myCreatedRoutes =  createBrowserRouter([
                   fetch(`http://localhost:5000/biodatas/${params.id}`)
               },
 
+        ]
+    },
+    {
+        path: 'dashboard',
+        element:<PrivateRoute><DashBoard></DashBoard></PrivateRoute> ,
+        children:[
+            {
+                path: 'favourites',
+                element: <Favouite></Favouite>
+            },
+            {
+                path: 'edit',
+                element: <EditBiodata></EditBiodata>
+            },
+
+
+            //admin routes 
+            {
+                path: 'manage',
+                element: <ManageUsers></ManageUsers>,
+              
+            },
         ]
     }
 ])

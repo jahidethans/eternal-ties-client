@@ -62,11 +62,12 @@ const Navbar = () => {
             <Link to='/'  >
                 <h1 className={logo ? 'hidden' : 'block'} >EternalTies.</h1>
             </Link>
-            <ul className='hidden md:flex gap-12 px-5'>
+            <ul className='hidden md:flex gap-4 px-5'>
                 <Link to='/'>Home</Link>
                 <Link to='/biodatas'>Biodatas</Link>
                 <Link to='/addfood'>About us</Link>
                 <Link to='/managemyfoods'>Contact us</Link>
+                
                     
             </ul>
 
@@ -107,10 +108,11 @@ const Navbar = () => {
                             {/* Dropdown menu */}
                             {isOpen && (
                                 <div className="origin-top-right absolute right-0 mt-12 w-48 rounded-md shadow-lg bg-textbg ring-1 ring-black ring-opacity-5 p-2">
-                                    <div className="py-1 text-center">
-                                        <div className='py-4'>
-                                            <p className='text-sm'>{user.displayName}</p>
-                                            <p className='text-sm'>{user.email}</p>
+                                    <div className="py-1 text-left ">
+                                        <div className='py-4 space-y-4'>
+                                            <p className='text-sm border-b-2 border-black pb-3'>{user.displayName}</p>
+                                            <p className='text-sm border-b-2 border-black pb-3'>{user.email}</p>
+                                            <div className='border-primary border py-1 px-2 text-center rounded-md font-medium hover:bg-primary hover:text-white'><Link to='/dashboard' className='pb-3 '>Dashboard</Link></div>
                                         </div>
                                         <button
                                             onClick={handleLogout}
@@ -157,7 +159,9 @@ const Navbar = () => {
                    
                     <div className='flex'>
                         {
-                            user?.email ? <button onClick={handleLogout} className='w-full my-4 p-3 border bg-gradient-to-r from-[var(--primary-dark)] to-[var(--primary-light)] text-white rounded-md'>Sign Out</button> : <Link to='/login' className='w-full my-4 p-3 border bg-gradient-to-r from-[var(--primary-dark)] to-[var(--primary-light)] text-white rounded-md'>Sign in</Link>
+                            user?.email ? <div>
+                                <div className='border-primary border py-1 px-2 text-center rounded-md font-medium hover:bg-primary hover:text-white'><Link to='/dashboard' className='pb-3 '>Dashboard</Link></div>
+                             <button onClick={handleLogout} className='w-full my-4 p-3 border bg-gradient-to-r from-[var(--primary-dark)] to-[var(--primary-light)] text-white rounded-md'>Sign Out</button> </div> : <Link to='/login' className='w-full my-4 p-3 border bg-gradient-to-r from-[var(--primary-dark)] to-[var(--primary-light)] text-white rounded-md'>Sign in</Link>
                         }
                     </div>
                    

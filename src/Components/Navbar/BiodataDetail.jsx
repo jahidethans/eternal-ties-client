@@ -5,6 +5,7 @@ import { MdLibraryAdd } from "react-icons/md";
 import toast from "react-hot-toast";
 import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 const BiodataDetail = () => {
@@ -13,11 +14,12 @@ const BiodataDetail = () => {
 
   const {user} = useAuth();
   
- 
-  
- 
-  
   const {_id, biodataType, image, name, contactEmail, dateOfBirth, expectedPartnerHeight, expectedPartnerWeight, fathersName, height, mobileNumber, mothersName, occupation, permanentDivision, presentDivision, race, weight, age } = biodata;
+  const axiosSecure = useAxiosSecure()
+ 
+  
+ 
+  
 
   const handleAddFav = async (biodata) => {
     const favItem = {
@@ -25,7 +27,8 @@ const BiodataDetail = () => {
       favEmail: user.email,
       biodataType, image, name, contactEmail, dateOfBirth, expectedPartnerHeight, expectedPartnerWeight, fathersName, height, mobileNumber, mothersName, occupation, permanentDivision, presentDivision, race, weight, age
     }
-    axios.post('http://localhost:5000/favourites', favItem)
+    
+    axiosSecure.post('/favourites', favItem)
     .then(res => {
       console.log(res.data);
       if(res.data.insertedId){

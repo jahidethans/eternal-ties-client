@@ -42,6 +42,8 @@ const AuthProvider = ({children}) => {
         return signOut(auth)
     }
 
+   
+
 // using observer
     useEffect(()=>{
         onAuthStateChanged(auth, (user)=>{
@@ -64,7 +66,8 @@ const AuthProvider = ({children}) => {
         logOut,
         setUser,
         user,
-        handleUpdateProfile
+        handleUpdateProfile,
+
     }
 
     return (

@@ -2,41 +2,65 @@ import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import img from '../../assets/signup img.png'
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 import toast from 'react-hot-toast';
+import { saveUser } from '../../api/auth';
+import axios from 'axios';
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
+import SocialLogin from '../../Components/Navbar/socialLogin/SocialLogin';
 
 
 
 
 const SignUp = () => {
+  const axiosPublic = useAxiosPublic();
     
     const {
         register,
         handleSubmit,
         formState: { errors },
       } = useForm();
+      const navigate = useNavigate();
 
-      const {createUser, googleLogin} = useAuth();
+      const {createUser, googleLogin, handleUpdateProfile} = useAuth();
 
-      const onSubmit = data => {console.log(data)
-        createUser(data.email, data.password)
+
+// create user
+      const onSubmit =  data => {
+              createUser(data.email, data.password)
         .then(result=>{
-            const loggedUser = result.user;
-            toast.success('User created successfully')
+          const loggedUser = result.user;
+          handleUpdateProfile(data.name, data.photoURL)
+          .then(()=>{
+
+            // create user entry in the databse
+            const userInfo = {
+              name: data.name,
+              email: data.email,
+            }
+            axiosPublic.post('/users', userInfo)
+            .then(res=>{
+              if(res.data.insertedId){
+                toast.success('User created successfully')
+                navigate('/')
+                
+              }
+
+            })
+            
+
+          });
+
         })
+        .catch(error => console.log(error))
     };
 
-    const handleSocial =()=>{
-      googleLogin()
-      .then(res=>{
 
-        toast.success('Successfully signed up!')
-      })
-      .catch(error=>console.log(error))
-    }
 
-    const captachaRef = useRef(null);
+
+
+   
     const [disabled, setDisabled] = useState(true);
 
     useEffect(()=>{
@@ -77,7 +101,7 @@ const SignUp = () => {
 
   <div className="mb-5">
     <label
-      htmlFor="email"
+      htmlFor="name"
       className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
     >
       Your name
@@ -92,6 +116,26 @@ const SignUp = () => {
       />
       {errors.name && <span className='text-red-600'>This field is required</span>}
   </div>
+  <div className="mb-5">
+    <label
+      htmlFor="name"
+      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+    >
+      Image
+    </label>
+    <input
+      type="text"
+      
+      {...register("photoURL", { required: true })}
+      className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+      placeholder="http://fehsjfuhj221.jpg"
+      required=""
+      />
+      {errors.name && <span className='text-red-600'>This field is required</span>}
+  </div>
+
+ 
+
 
   <div className="mb-5">
     <label
@@ -172,12 +216,10 @@ const SignUp = () => {
   >
     Register new account
   </button>
-  <button
-    onClick={handleSocial}
-    className={`text-white  bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800`}
-  >
-    Sign up with GOOGLE
-  </button>
+  
+{/* social */}
+<SocialLogin></SocialLogin>
+
 <div>
 
     <p className=''>Already have an account!</p>
