@@ -1,15 +1,42 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
-import Biodata from "./Biodata";
+import { MdLibraryAdd } from "react-icons/md";
+import toast from "react-hot-toast";
+import useAuth from "../../Hooks/useAuth";
+import axios from "axios";
 
 
 const BiodataDetail = () => {
   const biodata = useLoaderData();
-  
-
-  
   const [biodatas, setBiodatas] = useState([]);
+
+  const {user} = useAuth();
+  
+ 
+  
+ 
+  
+  const {_id, biodataType, image, name, contactEmail, dateOfBirth, expectedPartnerHeight, expectedPartnerWeight, fathersName, height, mobileNumber, mothersName, occupation, permanentDivision, presentDivision, race, weight, age } = biodata;
+
+  const handleAddFav = async (biodata) => {
+    const favItem = {
+      favItemId: _id,
+      favEmail: user.email,
+      biodataType, image, name, contactEmail, dateOfBirth, expectedPartnerHeight, expectedPartnerWeight, fathersName, height, mobileNumber, mothersName, occupation, permanentDivision, presentDivision, race, weight, age
+    }
+    axios.post('http://localhost:5000/favourites', favItem)
+    .then(res => {
+      console.log(res.data);
+      if(res.data.insertedId){
+        toast.success('Added to favourites')
+      }
+    })
+    console.log(favItem);
+  };
+  
+  
+  
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -22,15 +49,17 @@ const BiodataDetail = () => {
       .then((data) => setBiodatas(data));
   }, [biodata.biodataType]);
 
-  console.log(biodatas);
 
-  const {_id, biodataType, image, name, contactEmail, dateOfBirth, expectedPartnerHeight, expectedPartnerWeight, fathersName, height, mobileNumber, mothersName, occupation, permanentDivision, presentDivision, race, weight, age } = biodata;
+
 
     return (
         <div className="flex flex-col gap-3 md:flex-row container mx-auto">
 <div className="bg-gray-100 p-8 rounded-md shadow-md container mx-auto md:w-3/6 my-4">
        
-       <h2 className="text-2xl font-bold mb-4">{biodataType === 'male' ? 'Mr.' : 'Ms.'} {name}</h2>
+<div className="flex justify-between">
+      <h2 className="text-2xl font-bold mb-4">{biodataType === 'male' ? 'Mr.' : 'Ms.'} {name}</h2>
+      <div className="cursor-pointer" onClick={()=>handleAddFav(biodata)}><MdLibraryAdd size={20}/></div>
+      </div>
        <img src={image} alt={name} className="w-full max-h-[800px] object-cover mb-4 rounded-md" />
  
        <div className="mb-2">

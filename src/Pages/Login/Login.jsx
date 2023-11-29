@@ -2,12 +2,13 @@ import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import img from '../../assets/signup img.png'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 import toast from 'react-hot-toast';
 
 
 const Login = () => {
+  const [isloading, setIsloading] = useState(false);
     const {
         register,
         handleSubmit,
@@ -15,7 +16,9 @@ const Login = () => {
       } = useForm();
 
       const {loginUser, googleLogin} = useAuth();
-
+      const navigate = useNavigate();
+      const location = useLocation();
+      
 
       const onSubmit = data => {
         console.log(data)
@@ -23,6 +26,7 @@ const Login = () => {
         .then(result=>{
             const loggedUser = result.user;
             toast.success('logged in successfully');
+            navigate(location?.state ? location.state : '/');
         })
         .catch(error=>{
           toast.error('You do not have an account')
@@ -33,12 +37,14 @@ const Login = () => {
         googleLogin()
         .then(res=>{
   
-          toast.success('Successfully signed up!')
+          toast.success('Successfully signed up!');
+          navigate(location?.state ? location.state : '/');
         })
-        .catch(error=>console.log(error))
+        .catch(error=>console.log(error));
+        setIsloading(false);
       }
 
-    const captachaRef = useRef(null);
+  
     const [disabled, setDisabled] = useState(true);
 
     useEffect(()=>{
