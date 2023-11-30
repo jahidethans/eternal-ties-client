@@ -65,8 +65,8 @@ const Navbar = () => {
             <ul className='hidden md:flex gap-4 px-5'>
                 <Link to='/'>Home</Link>
                 <Link to='/biodatas'>Biodatas</Link>
-                <Link to='/addfood'>About us</Link>
-                <Link to='/managemyfoods'>Contact us</Link>
+                <Link to='/about'>About us</Link>
+                <Link to='/contact'>Contact us</Link>
                 
                     
             </ul>
@@ -154,8 +154,8 @@ const Navbar = () => {
                     }
                     <Link to='/' className='border-b border-black pb-2'>Home</Link>
                     <Link to='/biodatas' className='border-b border-black pb-2'>Biodatas</Link>
-                    <Link to='/addfood' className='border-b border-black pb-2'>About us</Link>
-                    <Link to='/managemyfoods' className='border-b border-black pb-2'>Contact us</Link>
+                    <Link to='/about' className='border-b border-black pb-2'>About us</Link>
+                    <Link to='/contact' className='border-b border-black pb-2'>Contact us</Link>
                    
                     <div className='flex'>
                         {

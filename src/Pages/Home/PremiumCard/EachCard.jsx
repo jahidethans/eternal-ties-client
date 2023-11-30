@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 
+const EachCard = ({biodata}) => {
 
-const Biodata = ({biodata}) => {
-  
-  const {_id, biodataType, image, name, contactEmail, dateOfBirth, expectedPartnerHeight, expectedPartnerWeight, fathersName, height, mobileNumber, mothersName, occupation, permanentDivision, presentDivision, race, weight, age, BiodataId } = biodata;
+    const {_id, biodataType, image, name, contactEmail, dateOfBirth, expectedPartnerHeight, expectedPartnerWeight, fathersName, height, mobileNumber, mothersName, occupation, permanentDivision, presentDivision, race, weight, age, BiodataId } = biodata;
+
 
     return (
-        <div>
+       
              <div className="bg-gray-100 p-8 rounded-md shadow-md max-w-md mx-auto my-4">
       <div className="flex justify-between">
       <h2 className="text-2xl font-bold mb-4">{biodataType === 'male' ? 'Mr.' : 'Ms.'} {name}</h2>
@@ -31,8 +31,9 @@ const Biodata = ({biodata}) => {
       
       
     </div>
-        </div>
+        
+    
     );
 };
 
-export default Biodata;
+export default EachCard;

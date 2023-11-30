@@ -1,0 +1,51 @@
+[
+    {
+      "id": 1,
+      "image": "https://i.ibb.co/QrPkCxs/image2.jpg",
+      "gender": "male",
+      "marriageDate": "2022-05-15",
+      "reviewStar": 5,
+      "successStory": "We met on this amazing platform and found true love. Thanks to the site for bringing us together!"
+    },
+    {
+      "id": 2,
+      "image": "https://i.ibb.co/D16J18B/image3.jpg",
+      "gender": "female",
+      "marriageDate": "2023-02-28",
+      "reviewStar": 4,
+      "successStory": "Our journey started here, and now we're happily married. Highly recommend this site!"
+    },
+    {
+      "id": 3,
+      "image": "https://i.ibb.co/q177SDJ/image5.jpg",
+      "gender": "male",
+      "marriageDate": "2021-11-10",
+      "reviewStar": 5,
+      "successStory": "Grateful for this platform for helping me find my life partner. Our story is a true testament to the power of love!"
+    },
+    {
+      "id": 4,
+      "image": "https://i.ibb.co/gZ7wz0P/image7.jpg",
+      "gender": "female",
+      "marriageDate": "2022-09-03",
+      "reviewStar": 4,
+      "successStory": "Found the love of my life here. We're happily married and owe it all to this wonderful site!"
+    },
+    {
+      "id": 5,
+      "image": "https://i.ibb.co/jVkQBr8/image9.jpg",
+      "gender": "male",
+      "marriageDate": "2023-06-20",
+      "reviewStar": 5,
+      "successStory": "Thanks to the site, I met my soulmate. Our wedding day was a dream come true!"
+    },
+    {
+      "id": 6,
+      "image": "https://i.ibb.co/QrPkCxs/image2.jpg",
+      "gender": "female",
+      "marriageDate": "2022-04-12",
+      "reviewStar": 4,
+      "successStory": "Our love story started here, and now we're happily married. Forever grateful!"
+    }
+  ]
+  

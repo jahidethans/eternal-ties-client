@@ -13,6 +13,12 @@ import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import ErrorPage from "../Components/ErrorElement/ErrorPage";
 import ViewMyBiodata from "../Pages/Dashboard/favourite/ViewMyBiodata";
 import ApprovePremium from "../Pages/Dashboard/ApprovePremium/ApprovePremium";
+import Payment from "../Components/Payment/Payment";
+import MyContactRequest from "../Pages/Dashboard/favourite/MyContactRequest";
+import Overview from "../Pages/Dashboard/Overview/Overview";
+import ContactReq from "../Pages/Dashboard/ContactReq/ContactReq";
+import Aboutus from "../Pages/Aboutus";
+import Contact from "../Pages/Contact";
 
 
 
@@ -44,6 +50,18 @@ const myCreatedRoutes =  createBrowserRouter([
                 loader: ({ params }) =>
                   fetch(`http://localhost:5000/getbiodatabyid/${params.id}`)
               },
+            {
+                path: '/payment',
+                element: <PrivateRoute><Payment></Payment></PrivateRoute>,
+              },
+            {
+                path: '/about',
+                element: <Aboutus></Aboutus>,
+              },
+            {
+                path: '/contact',
+                element: <Contact></Contact> ,
+              },
 
         ]
     },
@@ -63,9 +81,23 @@ const myCreatedRoutes =  createBrowserRouter([
                 path: 'view',
                 element: <ViewMyBiodata></ViewMyBiodata>
             },
+            {
+                path: 'requests',
+                element: <MyContactRequest></MyContactRequest>
+            },
 
 
             //admin routes 
+            {
+                path: 'overview',
+                element: <Overview></Overview>,
+              
+            },
+            {
+                path: 'contactreq',
+                element: <ContactReq></ContactReq>,
+              
+            },
             {
                 path: 'manage',
                 element: <ManageUsers></ManageUsers>,

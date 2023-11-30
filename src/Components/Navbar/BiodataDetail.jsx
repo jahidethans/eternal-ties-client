@@ -15,7 +15,9 @@ const BiodataDetail = () => {
   const {user} = useAuth();
   
   const {_id, biodataType, image, name, contactEmail, dateOfBirth, expectedPartnerHeight, expectedPartnerWeight, fathersName, height, mobileNumber, mothersName, occupation, permanentDivision, presentDivision, race, weight, age } = biodata;
-  const axiosSecure = useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
+
+
  
   
  
@@ -108,7 +110,7 @@ const BiodataDetail = () => {
        <div className="mb-2">
          <strong>Present Division:</strong> {presentDivision}
        </div>
-       { premium ? 
+       { user.status === 'premium'  ? 
         <div>
         <div className="mb-2">
         <strong>Contact Email:</strong> {contactEmail}
@@ -122,9 +124,9 @@ const BiodataDetail = () => {
         <div className="text-center mt-6 space-y-4">
           <p>Get premium</p>
           <p>or</p>
-          <button onClick={handleRequestContact}>
+          <Link to='/payment'><button onClick={handleRequestContact}>
           Request contact details
-        </button>
+        </button></Link>
         </div>
        }
      </div>
