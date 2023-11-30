@@ -12,6 +12,7 @@ import EditBiodata from "../Pages/Dashboard/favourite/EditBiodata";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import ErrorPage from "../Components/ErrorElement/ErrorPage";
 import ViewMyBiodata from "../Pages/Dashboard/favourite/ViewMyBiodata";
+import ApprovePremium from "../Pages/Dashboard/ApprovePremium/ApprovePremium";
 
 
 
@@ -68,6 +69,12 @@ const myCreatedRoutes =  createBrowserRouter([
             {
                 path: 'manage',
                 element: <ManageUsers></ManageUsers>,
+              
+            },
+            {
+                path: 'aprovepremium',
+                element: <ApprovePremium></ApprovePremium>,
+                loader: ()=>fetch('http://localhost:5000/premiums')
               
             },
         ]
