@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const ViewMyBiodata = () => {
 
@@ -26,9 +28,24 @@ const ViewMyBiodata = () => {
 
   const {_id, biodataType, image, name, contactEmail, dateOfBirth, expectedPartnerHeight, expectedPartnerWeight, fathersName, height, mobileNumber, mothersName, occupation, permanentDivision, presentDivision, race, weight, age, BiodataId } = biodata;
 
-  const handleRequestPremium =()=>{
-    
-  }
+  const handleRequestPremium = () => {
+    axiosPublic.post('/premiums', biodata)
+      .then(res => { Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Requested for premium",
+        showConfirmButton: false,
+        timer: 1500
+      });
+       
+        
+        
+      })
+      .catch(error => {
+        console.error('Error requesting premium:', error);
+        toast.error('Failed to request premium. Please try again.');
+      });
+  };
 
   
 

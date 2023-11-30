@@ -41,7 +41,7 @@ const myCreatedRoutes =  createBrowserRouter([
                 path: '/biodatas/:id',
                 element: <PrivateRoute><BiodataDetail></BiodataDetail></PrivateRoute>,
                 loader: ({ params }) =>
-                  fetch(`http://localhost:5000/biodatas/${params.id}`)
+                  fetch(`http://localhost:5000/getbiodatabyid/${params.id}`)
               },
 
         ]

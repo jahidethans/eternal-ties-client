@@ -53,6 +53,13 @@ const BiodataDetail = () => {
   }, [biodata.biodataType]);
 
 
+  const premium = false;
+
+  const handleRequestContact = () =>{
+
+  }
+
+
 
 
     return (
@@ -101,13 +108,25 @@ const BiodataDetail = () => {
        <div className="mb-2">
          <strong>Present Division:</strong> {presentDivision}
        </div>
-       <div className="mb-2">
-         <strong>Contact Email:</strong> {contactEmail}
-       </div>
-       
-       <div>
-         <strong>Mobile Number:</strong> {mobileNumber}
-       </div>
+       { premium ? 
+        <div>
+        <div className="mb-2">
+        <strong>Contact Email:</strong> {contactEmail}
+      </div>
+      
+      <div>
+        <strong>Mobile Number:</strong> {mobileNumber}
+      </div>
+        </div>
+        :
+        <div className="text-center mt-6 space-y-4">
+          <p>Get premium</p>
+          <p>or</p>
+          <button onClick={handleRequestContact}>
+          Request contact details
+        </button>
+        </div>
+       }
      </div>
           <div className="grid gap-3 grid-cols-1 lg:grid-cols-2 md:w-3/6 container mx-auto">
             {
