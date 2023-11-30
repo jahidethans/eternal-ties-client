@@ -1,8 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-// import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 

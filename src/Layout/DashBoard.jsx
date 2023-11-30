@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import { CiEdit } from "react-icons/ci";
 import { CiViewTimeline } from "react-icons/ci";
@@ -7,18 +7,32 @@ import { MdOutlineContactSupport } from "react-icons/md";
 import { AiOutlineBarChart, AiOutlineCheckSquare, AiOutlineLike } from "react-icons/ai";
 import { IoHomeOutline } from "react-icons/io5";
 import { FaUsers, FaWpforms } from "react-icons/fa";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const DashBoard = () => {
   const { user, logOut, setUser } = useAuth();
   const location = useLocation();
+  const [isAdmin, setIsAdmin] = useState();
+  const navigate = useNavigate();
 
-  // TODO: get is admin value from the database 
-  const isAdmin = true;
+  useEffect(() => {
+    // Fetch admin status from the server based on user's email
+    fetch(`http://localhost:5000/user/admin/${user.email}`)
+        .then((res) => res.json())
+        .then((data) => setIsAdmin(data.isAdmin))
+        .catch((error) => {
+            setIsAdmin(0);
+            // Handle errors here
+        });
+}, [user.email]);
+
 
   const handleLogout = () => {
     logOut();
     setUser({});
     toast.success('Logged out successfully');
+    navigate('/')
   };
 
   const isLinkActive = (path) => {
