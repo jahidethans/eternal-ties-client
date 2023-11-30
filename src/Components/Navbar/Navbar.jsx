@@ -79,7 +79,7 @@ const Navbar = () => {
                                 onClick={toggleDropdown}
                                 id="dropdownAvatarNameButton"
                                 data-dropdown-toggle="dropdownAvatarName"
-                                className="flex items-center text-sm font-medium text-white rounded-full hover:text-blue-600 dark:hover:text-blue-500 md:mr-0 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-white"
+                                className={`flex items-center text-sm font-medium  ${staticNavbar ? 'text-black' : 'text-white'} rounded-full hover:text-blue-600 dark:hover:text-blue-500 md:mr-0 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-white`}
                                 type="button"
                             >
                                 <span className="sr-only">Open user menu</span>
@@ -110,9 +110,9 @@ const Navbar = () => {
                                 <div className="origin-top-right absolute right-0 mt-12 w-48 rounded-md shadow-lg bg-textbg ring-1 ring-black ring-opacity-5 p-2">
                                     <div className="py-1 text-left ">
                                         <div className='py-4 space-y-4'>
-                                            <p className='text-sm border-b-2 border-black pb-3'>{user.displayName}</p>
-                                            <p className='text-sm border-b-2 border-black pb-3'>{user.email}</p>
-                                            <div className='border-primary border py-1 px-2 text-center rounded-md font-medium hover:bg-primary hover:text-white'><Link to='/dashboard' className='pb-3 '>Dashboard</Link></div>
+                                            <p className='text-sm text-black border-b-2 border-black pb-3'>{user.displayName}</p>
+                                            <p className='text-sm text-black border-b-2 border-black pb-3'>{user.email}</p>
+                                            <div className='border-primary border py-1 px-2 text-black text-center rounded-md font-medium hover:bg-primary hover:text-white'><Link to='/dashboard' className='pb-3 '>Dashboard</Link></div>
                                         </div>
                                         <button
                                             onClick={handleLogout}

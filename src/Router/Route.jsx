@@ -10,6 +10,7 @@ import DashBoard from "../Layout/DashBoard";
 import Favouite from "../Pages/Dashboard/favourite/Favouite";
 import EditBiodata from "../Pages/Dashboard/favourite/EditBiodata";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
+import ErrorPage from "../Components/ErrorElement/ErrorPage";
 
 
 
@@ -17,6 +18,7 @@ const myCreatedRoutes =  createBrowserRouter([
     {
         path: '/',
         element: <MainLayout></MainLayout>,
+        errorElement: <ErrorPage></ErrorPage>,
         children:[
             {
                 path: '/',
