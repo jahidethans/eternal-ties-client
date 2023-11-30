@@ -11,6 +11,7 @@ import Favouite from "../Pages/Dashboard/favourite/Favouite";
 import EditBiodata from "../Pages/Dashboard/favourite/EditBiodata";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import ErrorPage from "../Components/ErrorElement/ErrorPage";
+import ViewMyBiodata from "../Pages/Dashboard/favourite/ViewMyBiodata";
 
 
 
@@ -56,6 +57,10 @@ const myCreatedRoutes =  createBrowserRouter([
             {
                 path: 'edit',
                 element: <EditBiodata></EditBiodata>
+            },
+            {
+                path: 'view',
+                element: <ViewMyBiodata></ViewMyBiodata>
             },
 
 
