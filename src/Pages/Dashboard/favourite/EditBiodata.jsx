@@ -38,7 +38,7 @@ const EditBiodata = () => {
     const dateOfBirth = form.dateOfBirth.value;
     const height = form.ownHeight.value;
     const weight = form.ownWeight.value;
-    const age = form.ownAge.value;
+    const age = parseInt(form.ownAge.value, 10);
     const occupation = form.occupation.value;
     const race = form.race.value;
     const fathersName = form.fathersName.value;
@@ -101,8 +101,8 @@ const EditBiodata = () => {
               {/* <!--biodata type input--> */}
               Biodata Type:
               <select name="biodataType" className="mb-6 ml-4 flex-1 font-normal" required>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
+                <option value="Male">male</option>
+                <option value="Female">female</option>
 
               </select>
             </div>

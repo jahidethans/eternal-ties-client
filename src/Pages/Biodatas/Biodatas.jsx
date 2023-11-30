@@ -33,6 +33,7 @@ const Biodatas = () => {
           />
           <span>{ageRange[0]} - {ageRange[1]}</span>
         </div>
+
         <div>
           <label htmlFor="biodataType">Biodata Type:</label>
           <select id="biodataType" value={biodataType} onChange={(e) => setBiodataType(e.target.value)}>
@@ -41,6 +42,7 @@ const Biodatas = () => {
             <option value="female">Female</option>
           </select>
         </div>
+        
         <div>
           <label htmlFor="divisionFilter">Division:</label>
           <select id="divisionFilter" value={divisionFilter} onChange={(e) => setDivisionFilter(e.target.value)}>
